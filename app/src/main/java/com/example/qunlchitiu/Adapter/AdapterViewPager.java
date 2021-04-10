@@ -1,9 +1,13 @@
-package com.example.qunlchitiu;
+package com.example.qunlchitiu.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.qunlchitiu.Fragment.FragmentDetails;
+import com.example.qunlchitiu.Fragment.FragmentHome;
+import com.example.qunlchitiu.Fragment.FragmentSearch;
 
 public class AdapterViewPager extends FragmentStatePagerAdapter {
     //Contructor
