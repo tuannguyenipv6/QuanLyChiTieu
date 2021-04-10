@@ -2,12 +2,17 @@ package com.example.qunlchitiu.SQLite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 import com.example.qunlchitiu.Object.Spending;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class DatabaseSpending extends SQLiteOpenHelper {
 
@@ -34,6 +39,7 @@ public class DatabaseSpending extends SQLiteOpenHelper {
     public void newAdd(Spending spending){
         //chuyển từ date sang long
         long unixTime = spending.getmTime().getTime() / 1000;
+        //long sang string
         String time = String.valueOf(unixTime);
 
         SQLiteDatabase database = this.getWritableDatabase();   //phương thức getWritableDatabase() dùng để nghi lên Database
@@ -45,5 +51,31 @@ public class DatabaseSpending extends SQLiteOpenHelper {
 
         database.insert("Spending", "", contentValues);//insert dữ liệu vừa thêm vào database
         database.close();
+    }
+
+    //lấy tất cả Spending
+    public List<Spending> AllSpending(){
+        String sql = "SELECT * FROM Spending ";        //truy vấn tất cả trong bản
+        List<Spending> mSpendings = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);     //dùng cursor để điều hướng kết quả truy vấn
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){                                      //vòng lặp while chạy từ hàng đầu tiên tới hàng cuối cùng qua cursor
+
+            String pExpenses = cursor.getString(1);
+            int pMoney = cursor.getInt(2);
+            String pDate = cursor.getString(3);
+
+            long lDate = Long.parseLong(pDate);
+            // convert seconds to milliseconds
+            Date date = new java.util.Date(lDate*1000L);
+
+            Spending spending = new Spending(pExpenses, pMoney, date);
+            mSpendings.add(spending);
+
+            cursor.moveToNext();
+        }
+        this.close();
+        return mSpendings;
     }
 }

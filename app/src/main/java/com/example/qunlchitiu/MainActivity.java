@@ -2,6 +2,7 @@ package com.example.qunlchitiu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -10,6 +11,8 @@ import android.view.MenuItem;
 
 import com.example.qunlchitiu.Adapter.AdapterViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView mBottomNavigationView;

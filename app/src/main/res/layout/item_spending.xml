@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:id="@+id/imgS"
+            android:src="@drawable/ic_tiendo"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/imgS"
+            android:text="Nhí ngu mua tà tưa!"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:id="@+id/itConten"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_toRightOf="@id/imgS"
+            android:layout_below="@id/itConten"
+            android:textColor="#3F51B5"
+            android:text="3,000,000"
+            android:id="@+id/itMoney"
+            android:gravity="right"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_toRightOf="@id/imgS"
+            android:layout_below="@id/itMoney"
+            android:textColor="@color/black"
+            android:text="26/04/2000 - 08:30"
+            android:id="@+id/itDate"
+            android:paddingLeft="50dp"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
