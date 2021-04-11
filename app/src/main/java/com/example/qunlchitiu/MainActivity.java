@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.qunlchitiu.Adapter.AdapterViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView mBottomNavigationView;
     ViewPager mViewPager;
     AdapterViewPager adapter;
+    long backPressTinme;
+    Toast mToast;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,5 +85,19 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        //trong thời gian 2s nhấn back sẽ thoát application
+        if (backPressTinme + 2000 > System.currentTimeMillis()){
+            super.onBackPressed();//thoát application
+            mToast.cancel();//tắt hiển thị luôn tk Toast
+            return;
+        }else {
+            mToast = Toast.makeText(this, "Nhấn Back 1 lần nữa để Thoát!", Toast.LENGTH_SHORT);
+            mToast.show();
+        }
+        backPressTinme = System.currentTimeMillis();
     }
 }
