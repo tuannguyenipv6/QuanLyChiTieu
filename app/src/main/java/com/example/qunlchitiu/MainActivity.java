@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     AdapterViewPager adapter;
     long backPressTinme;
     Toast mToast;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
     private void Anhxa(){
         mBottomNavigationView = findViewById(R.id.mBottomNavigationView);
         mViewPager = findViewById(R.id.mViewPager);
+
     }
     private void setUpViewPager(){
         //khởi tạo
