@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,20 +35,18 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_details, container, false);
         Anhxa();
+
         mSpendings = spendingData.AllSpending();
         adapter = new AdapterSpending(mSpendings);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(layoutManager);
 
-
-
         //SwipeRefreshLayout
         mSwipeRefreshLayout.setOnRefreshListener(this);
         //this chín là phương thức ta đã implements ở trên
         //set màu cho SwipeRefreshLayout
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.teal_200));
-
 
         return view;
     }
@@ -58,7 +58,7 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
 
     @Override
     public void onRefresh() {
-        adapter.setSpendings(spendingData.AllSpending());
+        setAnimation();
         //vd cho nó load trong 2s với Handler
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -67,6 +67,13 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
                 //lệnh tắt SwipeRefreshLayout
                 mSwipeRefreshLayout.setRefreshing(false);
             }
-        }, 1500);//tắt sau 1.5s
+        }, 1000);//tắt sau 1.5s
+    }
+
+    private void setAnimation(){//nhận vào Resoucre animations
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_up_to_dow);
+        mRecyclerView.setLayoutAnimation(layoutAnimationController);
+        adapter.setSpendings(spendingData.AllSpending());
+        mRecyclerView.setAdapter(adapter);
     }
 }

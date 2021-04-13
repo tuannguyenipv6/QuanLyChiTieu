@@ -16,14 +16,14 @@ import java.util.List;
 
 public class AdapterSpending extends RecyclerView.Adapter<AdapterSpending.ViewHolderSpending> {
     private List<Spending> Spendings;
-    //Contructor
+    //set data
     public void setSpendings(List<Spending> spendings) {
         Spendings = spendings;
+        notifyDataSetChanged();
     }
-    //set data
+    //Contructor
     public AdapterSpending(List<Spending> spendings) {
         Spendings = spendings;
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -44,7 +44,7 @@ public class AdapterSpending extends RecyclerView.Adapter<AdapterSpending.ViewHo
         String strDate = formatter.format(spending.getmTime());
 
         holder.txConten.setText(spending.getmExpenses());
-        holder.txMoney.setText(spending.getmMoney() + "");
+        holder.txMoney.setText(spending.getmMoney() + " VNĐ");
         holder.txDate.setText(strDate);
     }
 

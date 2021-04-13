@@ -47,6 +47,8 @@ public class FragmentHome extends Fragment {
                     Spending spending = new Spending(sConten, iMoney, date);
                     spendingData.newAdd(spending);
                     Toast.makeText(getContext(), "Đã lưu!", Toast.LENGTH_SHORT).show();
+                    edtConten.setText("");
+                    edtMoney.setText("");
                 }
             }
         });
