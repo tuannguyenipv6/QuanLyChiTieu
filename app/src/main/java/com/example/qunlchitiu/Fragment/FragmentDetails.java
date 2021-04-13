@@ -48,6 +48,7 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         //set màu cho SwipeRefreshLayout
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.teal_200));
 
+
         return view;
     }
     private void Anhxa(){
