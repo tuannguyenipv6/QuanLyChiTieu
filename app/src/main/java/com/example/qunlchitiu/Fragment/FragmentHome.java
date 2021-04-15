@@ -24,9 +24,6 @@ import com.example.qunlchitiu.Object.Spending;
 import com.example.qunlchitiu.R;
 import com.example.qunlchitiu.SQLite.DatabaseSpending;
 
-import java.security.Timestamp;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
@@ -68,12 +65,17 @@ public class FragmentHome extends Fragment {
                 String sMoney = edtMoney.getText().toString().trim();
                 if (!sConten.isEmpty() && !sMoney.isEmpty()){
                     Date date = new Date();
-                    int iMoney = Integer.parseInt(sMoney);
-                    Spending spending = new Spending(sConten, iMoney, date);
-                    spendingData.newAdd(spending);
-                    Toast.makeText(getContext(), "Đã lưu!", Toast.LENGTH_SHORT).show();
-                    edtConten.setText("");
-                    edtMoney.setText("");
+                    try {
+                        int iMoney = Integer.parseInt(sMoney);
+                        Spending spending = new Spending(sConten, iMoney, date);
+                        spendingData.newAdd(spending);
+                        Toast.makeText(getContext(), "Đã lưu!", Toast.LENGTH_SHORT).show();
+                        edtConten.setText("");
+                        edtMoney.setText("");
+                    }
+                    catch(Exception e) {
+                        Toast.makeText(getContext(), "Số tiền quá lớn!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

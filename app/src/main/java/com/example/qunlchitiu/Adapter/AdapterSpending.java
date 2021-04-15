@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.qunlchitiu.ItemSpenOnClickListener;
 import com.example.qunlchitiu.Object.Spending;
 import com.example.qunlchitiu.R;
 
@@ -15,6 +16,12 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class AdapterSpending extends RecyclerView.Adapter<AdapterSpending.ViewHolderSpending> {
+    private ItemSpenOnClickListener listener;
+
+    public void setListener(ItemSpenOnClickListener listener) {
+        this.listener = listener;
+    }
+
     private List<Spending> Spendings;
     //set data
     public void setSpendings(List<Spending> spendings) {
@@ -46,6 +53,20 @@ public class AdapterSpending extends RecyclerView.Adapter<AdapterSpending.ViewHo
         holder.txConten.setText(spending.getmExpenses());
         holder.txMoney.setText(spending.getmMoney() + " VNĐ");
         holder.txDate.setText(strDate);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClick(spending);
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                listener.onLongClick(spending);
+                return false;
+            }
+        });
     }
 
     @Override
