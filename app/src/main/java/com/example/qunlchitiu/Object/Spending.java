@@ -6,11 +6,27 @@ public class Spending {
     private String mExpenses;
     private int mMoney;
     private Date mTime;
+    private int mAuto;
 
     public Spending(String mExpenses, int mMoney, Date mTime) {
         this.mExpenses = mExpenses;
         this.mMoney = mMoney;
         this.mTime = mTime;
+    }
+
+    public Spending(String mExpenses, int mMoney, Date mTime, int mAuto) {
+        this.mExpenses = mExpenses;
+        this.mMoney = mMoney;
+        this.mTime = mTime;
+        this.mAuto = mAuto;
+    }
+
+    public int getmAuto() {
+        return mAuto;
+    }
+
+    public void setmAuto(int mAuto) {
+        this.mAuto = mAuto;
     }
 
     public String getmExpenses() {

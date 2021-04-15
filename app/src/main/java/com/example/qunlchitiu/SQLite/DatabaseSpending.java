@@ -62,6 +62,7 @@ public class DatabaseSpending extends SQLiteOpenHelper {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){                                      //vòng lặp while chạy từ hàng đầu tiên tới hàng cuối cùng qua cursor
 
+            int pAuto = cursor.getInt(0);
             String pExpenses = cursor.getString(1);
             int pMoney = cursor.getInt(2);
             String pDate = cursor.getString(3);
@@ -70,7 +71,7 @@ public class DatabaseSpending extends SQLiteOpenHelper {
             // convert seconds to milliseconds
             Date date = new java.util.Date(lDate*1000L);
 
-            Spending spending = new Spending(pExpenses, pMoney, date);
+            Spending spending = new Spending(pExpenses, pMoney, date, pAuto);
             mSpendings.add(spending);
 
             cursor.moveToNext();
