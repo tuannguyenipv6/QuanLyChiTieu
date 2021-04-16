@@ -47,6 +47,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sa90.materialarcmenu.ArcMenu;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -109,7 +110,7 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
 
             @Override   //
             public void onClick(Spending spending) {
-                Toast.makeText(getContext(), spending.getmExpenses(), Toast.LENGTH_SHORT).show();
+                DialogShow(spending);
             }
 
             @Override   //hiện dialog xóa hoặc sửa
@@ -179,6 +180,7 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
             }
         });
 
+        //set ẩn hiện title CollapsingToolbarLayout
         mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -189,6 +191,7 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         });
     }
 
+    //click btn home
     private void onClickBtnAdd(){
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override//hàm bắt sự kiện Button
@@ -326,6 +329,43 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
                         dialog.dismiss();
                     }
                 }
+            }
+        });
+        dialog.show();
+    }
+
+    //dialog show thông tin
+    private void DialogShow(Spending spending){
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.dialog_show_spending);
+
+        Window window = dialog.getWindow();
+        if (window == null){
+            return;
+        }
+        //Bo tròn và set vị trí hiển thị dialog
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams windowLayoutParams = window.getAttributes();
+        windowLayoutParams.gravity = Gravity.CENTER; //hiển thị ở giữa
+        window.setAttributes(windowLayoutParams);
+
+        TextView txConten = dialog.findViewById(R.id.ShConten);
+        TextView txMoney = dialog.findViewById(R.id.ShMoney);
+        TextView txDate = dialog.findViewById(R.id.ShDate);
+        ImageView btnClear = dialog.findViewById(R.id.ShClear);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("E, dd/MM/yyyy-HH:mm");
+        String strDate = formatter.format(spending.getmTime());
+
+        txConten.setText(spending.getmExpenses());
+        txMoney.setText(spending.getmMoney() + " VNĐ");
+        txDate.setText(strDate);
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
             }
         });
         dialog.show();
