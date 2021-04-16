@@ -112,4 +112,15 @@ public class DatabaseSpending extends SQLiteOpenHelper {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         return sqLiteDatabase.delete("Spending", "dAuto" + "=?", new String[]{String.valueOf(zAuto)});
     }
+
+    //sửa 1 Spending
+    public int Update(Spending spending){
+        //cần quyền đọc database và viết lại nên ta dùng đến getReadableDatabase();
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        //không thể truyền thẳng 1 đối tuoq taikhoan vào database được mà phải thông qua ContentValues để put(key, value) vào, key là tên trường(cột), value giá trị thay đổi.
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("dExpenses", spending.getmExpenses());
+        contentValues.put("dMoney", spending.getmMoney());
+        return sqLiteDatabase.update("Spending", contentValues, "dAuto" + "=?", new String[]{String.valueOf(spending.getmAuto())});
+    }
 }

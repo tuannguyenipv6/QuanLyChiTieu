@@ -21,6 +21,12 @@ public class Spending {
         this.mAuto = mAuto;
     }
 
+    public Spending(String mExpenses, int mMoney, int mAuto) {
+        this.mExpenses = mExpenses;
+        this.mMoney = mMoney;
+        this.mAuto = mAuto;
+    }
+
     public int getmAuto() {
         return mAuto;
     }

@@ -1,16 +1,28 @@
 package com.example.qunlchitiu.Fragment;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.RecognizerIntent;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,8 +47,10 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sa90.materialarcmenu.ArcMenu;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     AdapterSpending adapter;
@@ -47,6 +61,9 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
     SwipeRefreshLayout mSwipeRefreshLayout;
     ViewPager mViewPager;
     TextView TTthang, TTtuan;
+    private final int REQ_CODE_SPEECH_INPUT = 100;
+
+    EditText edtConten;
 
     //AppBarLayout: bố cục thanh ứng dụng
     AppBarLayout mAppBarLayout;
@@ -185,15 +202,125 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
             public void onClick(DialogInterface dialog, int which) {
                 if (spendingData.Delete(spending.getmAuto()) > 0){
                     Toast.makeText(getContext(), "Đã xóa!", Toast.LENGTH_SHORT).show();
+                    setAnimation();
+                    setTongCT(new Date());
                 }else Toast.makeText(getContext(), "Thất bại!", Toast.LENGTH_SHORT).show();
             }
         });
         dialog.setPositiveButton("Sửa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                DialogUpdate(spending);
+                dialog.dismiss();
             }
         });
         dialog.show();
+    }
+
+    private void DialogUpdate(Spending spending){
+        Dialog dialog = new Dialog(getContext());
+        dialog.setContentView(R.layout.dialog_sua_spending);
+
+        Window window = dialog.getWindow();
+        if (window == null){
+            return;
+        }
+        //Bo tròn và set vị trí hiển thị dialog
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        WindowManager.LayoutParams windowLayoutParams = window.getAttributes();
+        windowLayoutParams.gravity = Gravity.CENTER; //hiển thị ở giữa
+        window.setAttributes(windowLayoutParams);
+
+        edtConten = dialog.findViewById(R.id.dlgConten);
+        EditText edtMoney = dialog.findViewById(R.id.dlgMoney);
+        ImageView btnClear = dialog.findViewById(R.id.dlgClear);
+        TextView btnOK = dialog.findViewById(R.id.dlgOk);
+
+        edtConten.setText(spending.getmExpenses());
+        edtMoney.setText(spending.getmMoney() + "");
+
+        //bắt sự kiện icon của edtConten
+        edtConten.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_RIGHT = 2;
+
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (edtConten.getRight() - edtConten.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        promptSpeechInput();
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Conten = edtConten.getText().toString().trim();
+                String Money = edtMoney.getText().toString().trim();
+                if (!Conten.isEmpty() && !Money.isEmpty()){
+                    int iMoney = Integer.parseInt(Money);
+                    Spending spending1 = new Spending(Conten, iMoney, spending.getmAuto());
+                    if (spendingData.Update(spending1) > 0){
+                        Toast.makeText(getContext(), "Đã thay đổi", Toast.LENGTH_SHORT).show();
+                        setAnimation();
+                        setTongCT(new Date());
+                        dialog.dismiss();
+                    }
+                }
+            }
+        });
+        dialog.show();
+    }
+
+    /**
+     * Gọi dialog của google speech thông qua Intent
+     * Một số action quan trọng trong Intent như
+     * ACTION_RECOGNIZE_SPEECH, LANGUAGE_MODEL_FREE_FORM, EXTRA_PROMPT
+     * */
+    private void promptSpeechInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
+                getString(R.string.speech_prompt));
+        try {
+            startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getContext(),
+                    getString(R.string.speech_not_supported),
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Trả lại dữ liệu sau khi nhập giọng nói vào
+     * */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == getActivity().RESULT_OK && null != data) {
+
+                    ArrayList<String> result = data
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    edtConten.setText(result.get(0));
+                }
+                break;
+            }
+        }
     }
 }
