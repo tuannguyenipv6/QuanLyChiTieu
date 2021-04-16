@@ -109,28 +109,19 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/flbOne"
-            android:src="@android:drawable/ic_dialog_email"/>
+            android:id="@+id/iArcToday"
+            android:src="@drawable/ic_today"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/flbTwo"
-            android:src="@android:drawable/ic_dialog_alert"/>
+            android:id="@+id/iArcWeek"
+            android:src="@drawable/ic_week"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/flbThree"
-            android:src="@android:drawable/ic_dialog_email"/>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/flbFour"
-            android:src="@android:drawable/ic_dialog_info"/>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/flbFive"
-            android:src="@android:drawable/ic_dialog_map"/>
+            android:id="@+id/iArcMoth"
+            android:src="@drawable/ic_moth"/>
+
     </com.sa90.materialarcmenu.ArcMenu>
 </RelativeLayout>
 

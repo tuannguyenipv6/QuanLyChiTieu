@@ -84,20 +84,25 @@ public class DatabaseSpending extends SQLiteOpenHelper {
     //xuất ra tiền tiêu thụ theo sformatter
     public int TieuThuThang(Date date, String sformatter){
         int result = 0;
+
         //format lấy ra tháng để so sánh
         SimpleDateFormat formatter = new SimpleDateFormat(sformatter);
-        String strDate = formatter.format(date);
+        String PresentDate = formatter.format(date);
+
         //truy vấn tất cả trong bản
         String sql = "SELECT * FROM Spending ";
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery(sql, null);     //dùng cursor để điều hướng kết quả truy vấn
         cursor.moveToFirst();
+
         while (!cursor.isAfterLast()){                                      //vòng lặp while chạy từ hàng đầu tiên tới hàng cuối cùng qua cursor
+            //lấy date từ bảng ra convert và so sánh với PresentDate
             String pDate = cursor.getString(3);
             long lDate = Long.parseLong(pDate);
             Date idate = new java.util.Date(lDate*1000L);
             String striDate = formatter.format(idate);
-            if (strDate.equals(striDate)){
+
+            if (PresentDate.equals(striDate)){
                 int pMoney = cursor.getInt(2);
                 result = result + pMoney;
             }
@@ -123,4 +128,40 @@ public class DatabaseSpending extends SQLiteOpenHelper {
         contentValues.put("dMoney", spending.getmMoney());
         return sqLiteDatabase.update("Spending", contentValues, "dAuto" + "=?", new String[]{String.valueOf(spending.getmAuto())});
     }
+
+    //List spending theo Present
+    public List<Spending> PresentSpending(Date date, String sformatter){
+        List<Spending> result = new ArrayList<>();
+
+        //format lấy ra tháng để so sánh
+        SimpleDateFormat formatter = new SimpleDateFormat(sformatter);
+        String PresentDate = formatter.format(date);
+
+        //truy vấn tất cả trong bản
+        String sql = "SELECT * FROM Spending ";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);     //dùng cursor để điều hướng kết quả truy vấn
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()){                                      //vòng lặp while chạy từ hàng đầu tiên tới hàng cuối cùng qua cursor
+            //lấy date từ bảng ra convert và so sánh với PresentDate
+            String pDate = cursor.getString(3);
+            long lDate = Long.parseLong(pDate);
+            Date idate = new java.util.Date(lDate*1000L);
+            String striDate = formatter.format(idate);
+
+            if (PresentDate.equals(striDate)){
+                int pMoney = cursor.getInt(2);
+                int pAuto = cursor.getInt(0);
+                String pExpenses = cursor.getString(1);
+
+                Spending spending = new Spending(pExpenses, pMoney, idate, pAuto);
+                result.add(spending);
+            }
+            cursor.moveToNext();
+        }
+        this.close();
+        return result;
+    }
+
 }

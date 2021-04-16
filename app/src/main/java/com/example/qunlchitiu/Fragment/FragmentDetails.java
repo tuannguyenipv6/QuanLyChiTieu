@@ -76,14 +76,15 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
     ArcMenu mArcMenu;
     int cThang, cTuan;
 
+    FloatingActionButton iArcToday, iArcWeek, iArcMoth;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_details, container, false);
         Anhxa();
 
-
-
+        //set lại tổng tháng, tuần và RecyclerView
         Date date = new Date();
         setTongCT(date);
         mSpendings = spendingData.AllSpending();
@@ -91,30 +92,62 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setAdapter(adapter);
         mRecyclerView.setLayoutManager(layoutManager);
-        //SwipeRefreshLayout
-        mSwipeRefreshLayout.setOnRefreshListener(this);
-        //this chín là phương thức ta đã implements ở trên
+
+        //SwipeRefreshLayout: vuốt làm mới lại
+        mSwipeRefreshLayout.setOnRefreshListener(this); //this chín là phương thức ta đã implements ở trên
         //set màu cho SwipeRefreshLayout
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.teal_200));
+        //sau khi vuốt set lại data
         initToolbarAnimations();
         onClickBtnAdd();
 
+        //trượt ẩn hiện ArcMenu
         mRecyclerView.setOnTouchListener(new UtilAnimation(getContext(), mArcMenu));
 
+        //sự kiện on click item
         adapter.setListener(new ItemSpenOnClickListener() {
-            @Override
+
+            @Override   //
             public void onClick(Spending spending) {
                 Toast.makeText(getContext(), spending.getmExpenses(), Toast.LENGTH_SHORT).show();
             }
 
-            @Override
+            @Override   //hiện dialog xóa hoặc sửa
             public void onLongClick(Spending spending) {
                 DialogXoaSua(spending);
+            }
+
+        });
+
+        //bắt sự kiện các FloatingActionButton trong ArcMenu
+
+        //sự kiện hôm nay
+        iArcToday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDataDate("E, dd/MM/yyyy");
+            }
+        });
+
+        //sự kiện tuần này
+        iArcWeek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDataDate("W, MM/yyyy");
+            }
+        });
+
+        //sự kiện tháng này
+        iArcMoth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDataDate("MM/yyyy");
             }
         });
 
         return view;
     }
+
     private void Anhxa(){
         mRecyclerView = view.findViewById(R.id.mRecyclerView);
         TTthang = view.findViewById(R.id.TTthang);
@@ -127,6 +160,9 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) view.findViewById(R.id.mCollapsingToolbarLayout);
         mToolbar = (Toolbar) view.findViewById(R.id.mToolbar);
         mFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.mFloatingActionButton);
+        iArcToday = view.findViewById(R.id.iArcToday);
+        iArcWeek = view.findViewById(R.id.iArcWeek);
+        iArcMoth = view.findViewById(R.id.iArcMoth);
     }
 
 
@@ -155,13 +191,14 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
 
     private void onClickBtnAdd(){
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override//hàm bắt sự kiện Button add
+            @Override//hàm bắt sự kiện Button
             public void onClick(View v) {
                 mViewPager.setCurrentItem(0);
             }
         });
     }
 
+    //hàm trượt set lại data
     @Override
     public void onRefresh() {
         setAnimation();
@@ -177,10 +214,20 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         }, 1000);//tắt sau 1s
     }
 
-    private void setAnimation(){//nhận vào Resoucre animations
+    //set data cho RV và animotion
+    private void setAnimation(){
         LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_up_to_dow);
         mRecyclerView.setLayoutAnimation(layoutAnimationController);
         adapter.setSpendings(spendingData.AllSpending());
+        mRecyclerView.setAdapter(adapter);
+    }
+
+    //set data theo ngày
+    private void setDataDate(String formatter){
+        LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(getContext(), R.anim.layout_up_to_dow);
+        mRecyclerView.setLayoutAnimation(layoutAnimationController);
+        Date date = new Date();
+        adapter.setSpendings(spendingData.PresentSpending(date, formatter));
         mRecyclerView.setAdapter(adapter);
     }
 
@@ -217,6 +264,7 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         dialog.show();
     }
 
+    //dialog sửa data trong SQLi
     private void DialogUpdate(Spending spending){
         Dialog dialog = new Dialog(getContext());
         dialog.setContentView(R.layout.dialog_sua_spending);
