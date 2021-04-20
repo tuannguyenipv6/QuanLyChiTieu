@@ -164,4 +164,36 @@ public class DatabaseSpending extends SQLiteOpenHelper {
         return result;
     }
 
+    //xuất ra tiền tiêu thụ tháng
+    public int Moth(int mMoth, Date mDate){
+        int result = 0;
+
+        //format lấy ra tháng để so sánh
+        SimpleDateFormat formatMoth = new SimpleDateFormat("MM");
+        SimpleDateFormat formatYear = new SimpleDateFormat("yyyy");
+        int Date =  Integer.parseInt(formatYear.format(mDate));
+
+        //truy vấn tất cả trong bản
+        String sql = "SELECT * FROM Spending ";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);     //dùng cursor để điều hướng kết quả truy vấn
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()){                                      //vòng lặp while chạy từ hàng đầu tiên tới hàng cuối cùng qua cursor
+            //lấy date từ bảng ra convert và so sánh với PresentDate
+            String pDate = cursor.getString(3);
+            long lDate = Long.parseLong(pDate);
+            Date idate = new java.util.Date(lDate*1000L);
+            int iMoth = Integer.parseInt(formatMoth.format(idate));
+            int iYear = Integer.parseInt(formatYear.format(idate));
+
+            if (iMoth == mMoth && iYear == Date){
+                int pMoney = cursor.getInt(2);
+                result = result + pMoney;
+            }
+            cursor.moveToNext();
+        }
+        this.close();
+        return result;
+    }
 }

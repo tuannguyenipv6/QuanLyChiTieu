@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mRelativeLayout"
+        android:padding="10dp"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <View
+            android:layout_width="880dp"
+            android:layout_height="3dp"
+            android:background="@color/black"
+            android:id="@+id/Viw1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="90dp"
+            android:layout_marginLeft="5dp"></View>
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:layout_above="@id/Viw1"
+            android:id="@+id/Viw2"
+            android:layout_marginLeft="5dp"></View>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth1"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Viw2"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Viw2"
+            android:text="Th.1"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="28dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth2"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth1"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth1"
+            android:text="Th.2"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth3"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth2"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth2"
+            android:text="Th.3"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth4"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth3"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth3"
+            android:text="Th.4"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth5"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth4"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth4"
+            android:text="Th.5"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth6"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth5"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth5"
+            android:text="Th.6"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth7"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth6"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth6"
+            android:text="Th.7"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth8"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth7"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth7"
+            android:text="Th.8"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth9"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth8"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth8"
+            android:text="Th.9"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth10"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth9"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth9"
+            android:text="Th.10"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth11"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth10"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth10"
+            android:text="Th.11"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Moth12"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Moth11"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Moth11"
+            android:text="Th.12"
+            android:textColor="@color/black"
+            android:layout_below="@id/Moth1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth1"
+            android:gravity="center"
+            android:id="@+id/VNDth1"
+            android:text="900.000.000 VNĐ"
+            android:layout_toRightOf="@id/Viw2"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth2"
+            android:gravity="center"
+            android:id="@+id/VNDth2"
+            android:layout_toRightOf="@id/Moth1"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth3"
+            android:id="@+id/VNDth3"
+            android:gravity="center"
+            android:layout_toRightOf="@id/Moth2"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth4"
+            android:id="@+id/VNDth4"
+            android:gravity="center"
+            android:layout_toRightOf="@id/Moth3"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth5"
+            android:gravity="center"
+            android:id="@+id/VNDth5"
+            android:layout_toRightOf="@id/Moth4"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth6"
+            android:gravity="center"
+            android:id="@+id/VNDth6"
+            android:layout_toRightOf="@id/Moth5"
+            android:text="90.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth7"
+            android:gravity="center"
+            android:id="@+id/VNDth7"
+            android:layout_toRightOf="@id/Moth6"
+            android:text="90.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth8"
+            android:gravity="center"
+            android:id="@+id/VNDth8"
+            android:layout_toRightOf="@id/Moth7"
+            android:text="90.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth9"
+            android:id="@+id/VNDth9"
+            android:gravity="center"
+            android:layout_toRightOf="@id/Moth8"
+            android:text="90.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth10"
+            android:id="@+id/VNDth10"
+            android:gravity="center"
+            android:layout_toRightOf="@id/Moth9"
+            android:text="90.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth11"
+            android:id="@+id/VNDth11"
+            android:gravity="center"
+            android:layout_toRightOf="@id/Moth10"
+            android:text="90.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Moth12"
+            android:gravity="center"
+            android:id="@+id/VNDth12"
+            android:layout_toRightOf="@id/Moth11"
+            android:text="90.000 VNĐ"/>
+
+    </RelativeLayout>
+</HorizontalScrollView>

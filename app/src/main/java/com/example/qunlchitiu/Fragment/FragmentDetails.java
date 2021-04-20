@@ -38,6 +38,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.qunlchitiu.Adapter.AdapterSpending;
 import com.example.qunlchitiu.ItemSpenOnClickListener;
+import com.example.qunlchitiu.MainActivity;
+import com.example.qunlchitiu.MainActivity_Chart;
 import com.example.qunlchitiu.Object.Spending;
 import com.example.qunlchitiu.R;
 import com.example.qunlchitiu.SQLite.DatabaseSpending;
@@ -196,7 +198,8 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         mFloatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override//hàm bắt sự kiện Button
             public void onClick(View v) {
-                mViewPager.setCurrentItem(0);
+                Intent intent = new Intent(getContext(), MainActivity_Chart.class);
+                startActivity(intent);
             }
         });
     }
