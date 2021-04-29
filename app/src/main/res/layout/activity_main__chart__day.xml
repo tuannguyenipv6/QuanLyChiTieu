@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="40dp"
+        android:id="@+id/RV_Char_Day"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="550dp"
+            android:layout_height="3dp"
+            android:background="@color/black"
+            android:id="@+id/Viw1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="90dp"
+            android:layout_marginLeft="5dp"></View>
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:layout_above="@id/Viw1"
+            android:id="@+id/Viw2"
+            android:layout_marginLeft="5dp"></View>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Day2"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Viw2"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Viw2"
+            android:text="Thứ 2"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:layout_below="@id/Day2"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="28dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Day3"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Day2"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Day2"
+            android:text="Thứ 3"
+            android:textColor="@color/black"
+            android:layout_below="@id/Day2"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Day4"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Day3"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Day3"
+            android:text="Thứ 4"
+            android:textColor="@color/black"
+            android:layout_below="@id/Day2"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Day5"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Day4"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Day4"
+            android:text="Thứ 5"
+            android:textColor="@color/black"
+            android:layout_below="@id/Day2"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Day6"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Day5"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Day5"
+            android:text="Thứ 6"
+            android:textColor="@color/black"
+            android:layout_below="@id/Day5"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Day7"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Day6"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Day6"
+            android:text="Thứ 7"
+            android:textColor="@color/black"
+            android:layout_below="@id/Day2"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/DayCN"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Day7"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Day7"
+            android:text="Chủ Nhật"
+            android:textColor="@color/black"
+            android:layout_below="@id/Day2"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Day2"
+            android:gravity="center"
+            android:id="@+id/VNDT2"
+            android:text="9.000 VNĐ"
+            android:layout_toRightOf="@id/Viw2"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Day3"
+            android:gravity="center"
+            android:id="@+id/VNDT3"
+            android:layout_toRightOf="@id/Day2"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Day4"
+            android:gravity="center"
+            android:id="@+id/VNDT4"
+            android:text="9.000 VNĐ"
+            android:layout_toRightOf="@id/Day3"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Day5"
+            android:gravity="center"
+            android:id="@+id/VNDT5"
+            android:layout_toRightOf="@id/Day4"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Day6"
+            android:gravity="center"
+            android:id="@+id/VNDT6"
+            android:text="9.000 VNĐ"
+            android:layout_toRightOf="@id/Day5"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Day7"
+            android:gravity="center"
+            android:id="@+id/VNDT7"
+            android:layout_toRightOf="@id/Day6"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/DayCN"
+            android:gravity="center"
+            android:id="@+id/VNDCN"
+            android:layout_toRightOf="@id/Day7"
+            android:text="9.000 VNĐ"/>
+    </RelativeLayout>
+</HorizontalScrollView>

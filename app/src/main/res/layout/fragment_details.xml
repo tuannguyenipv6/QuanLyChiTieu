@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:src="@drawable/ic_home"
+            android:src="@drawable/ic_chart"
             android:backgroundTint="#EFE697"
             android:id="@+id/mFloatingActionButton"
             app:fabSize="normal"
@@ -121,6 +121,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/iArcMoth"
             android:src="@drawable/ic_moth"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iArcChNgay"
+            android:src="@drawable/ic_ch_ngay"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/iArcChTuan"
+            android:src="@drawable/ic_ch_tuan"/>
 
     </com.sa90.materialarcmenu.ArcMenu>
 </RelativeLayout>

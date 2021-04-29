@@ -184,10 +184,48 @@ public class DatabaseSpending extends SQLiteOpenHelper {
             String pDate = cursor.getString(3);
             long lDate = Long.parseLong(pDate);
             Date idate = new java.util.Date(lDate*1000L);
+
             int iMoth = Integer.parseInt(formatMoth.format(idate));
             int iYear = Integer.parseInt(formatYear.format(idate));
 
             if (iMoth == mMoth && iYear == Date){
+                int pMoney = cursor.getInt(2);
+                result = result + pMoney;
+            }
+            cursor.moveToNext();
+        }
+        this.close();
+        return result;
+    }
+
+    //xuất ra tiền tiêu thụ Ngày
+    //với thứ 2 là 1, thứ 3 là 2...
+    public int Day(int mDay, Date mDate){
+        int result = 0;
+
+        //format lấy ra tháng để so sánh
+        SimpleDateFormat formatWeekYear = new SimpleDateFormat("w/yyyy");
+        SimpleDateFormat  formatDay = new SimpleDateFormat("u");
+
+        //String formatWeekYear
+        String sformatDate = formatWeekYear.format(mDate);
+
+        //truy vấn tất cả trong bản
+        String sql = "SELECT * FROM Spending ";
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(sql, null);     //dùng cursor để điều hướng kết quả truy vấn
+        cursor.moveToFirst();
+
+        while (!cursor.isAfterLast()){                                      //vòng lặp while chạy từ hàng đầu tiên tới hàng cuối cùng qua cursor
+            //lấy date từ bảng ra convert và so sánh với PresentDate
+            String pDate = cursor.getString(3);
+            long lDate = Long.parseLong(pDate);
+            Date idate = new java.util.Date(lDate*1000L);
+
+            String sformatiDate = formatWeekYear.format(idate);
+            int iformatiDate  = Integer.parseInt(formatDay.format(idate));
+
+            if (mDay == iformatiDate && sformatDate.equals(sformatiDate)){
                 int pMoney = cursor.getInt(2);
                 result = result + pMoney;
             }

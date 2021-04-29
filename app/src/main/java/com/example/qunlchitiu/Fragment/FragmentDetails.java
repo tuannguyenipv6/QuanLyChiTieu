@@ -40,6 +40,7 @@ import com.example.qunlchitiu.Adapter.AdapterSpending;
 import com.example.qunlchitiu.ItemSpenOnClickListener;
 import com.example.qunlchitiu.MainActivity;
 import com.example.qunlchitiu.MainActivity_Chart;
+import com.example.qunlchitiu.MainActivity_Chart_Day;
 import com.example.qunlchitiu.Object.Spending;
 import com.example.qunlchitiu.R;
 import com.example.qunlchitiu.SQLite.DatabaseSpending;
@@ -79,7 +80,7 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
     ArcMenu mArcMenu;
     int cThang, cTuan;
 
-    FloatingActionButton iArcToday, iArcWeek, iArcMoth;
+    FloatingActionButton iArcToday, iArcWeek, iArcMoth, iArcChNgay, iArcChTuan;
 
     @Nullable
     @Override
@@ -148,6 +149,17 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
             }
         });
 
+        //Sự kiện biểu đồ Tuần
+
+        //Sự kiện biểu đồ ngày
+        iArcChNgay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MainActivity_Chart_Day.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -166,6 +178,8 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         iArcToday = view.findViewById(R.id.iArcToday);
         iArcWeek = view.findViewById(R.id.iArcWeek);
         iArcMoth = view.findViewById(R.id.iArcMoth);
+        iArcChTuan = view.findViewById(R.id.iArcChTuan);
+        iArcChNgay = view.findViewById(R.id.iArcChNgay);
     }
 
 
@@ -239,8 +253,8 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
 
     //set tiền chi tiêu tháng & tuần
     private void setTongCT(Date date){
-        cThang = spendingData.TieuThuThang(date, "MM");
-        cTuan = spendingData.TieuThuThang(date, "W");
+        cThang = spendingData.TieuThuThang(date, "MM/yyyy");
+        cTuan = spendingData.TieuThuThang(date, "W/MM/yyyy");
         TTthang.setText("Tháng này: " + cThang + " VNĐ");
         TTtuan.setText("Tuần này: " + cTuan + " VNĐ");
     }
