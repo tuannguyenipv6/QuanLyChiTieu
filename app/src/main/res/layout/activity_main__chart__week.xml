@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="50dp"
+        android:id="@+id/RV_Char_Week"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="365dp"
+            android:layout_height="3dp"
+            android:background="@color/black"
+            android:id="@+id/Viw1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="90dp"
+            android:layout_marginLeft="5dp"></View>
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:layout_above="@id/Viw1"
+            android:id="@+id/Viw2"
+            android:layout_marginLeft="5dp"></View>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Week1"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Viw2"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Viw2"
+            android:text="Tuần 1"
+            android:padding="3dp"
+            android:textColor="@color/black"
+            android:layout_below="@id/Week1"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="28dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Week2"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Week1"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Week1"
+            android:text="Tuần 2"
+            android:textColor="@color/black"
+            android:layout_below="@id/Week1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Week3"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Week2"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Week2"
+            android:text="Tuần 3"
+            android:textColor="@color/black"
+            android:layout_below="@id/Week3"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Week4"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Week3"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Week3"
+            android:text="Tuần 4"
+            android:textColor="@color/black"
+            android:layout_below="@id/Week1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/botron_th"
+            android:id="@+id/Week5"
+            android:layout_above="@id/Viw1"
+            android:layout_toRightOf="@id/Week4"
+            android:layout_marginLeft="40dp"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_toRightOf="@id/Week4"
+            android:text="Tuần 5"
+            android:textColor="@color/black"
+            android:layout_below="@id/Week1"
+            android:padding="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="30dp"></TextView>
+
+
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Week1"
+            android:gravity="center"
+            android:id="@+id/VNDW1"
+            android:text="9.000 VNĐ"
+            android:layout_toRightOf="@id/Viw2"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Week2"
+            android:gravity="center"
+            android:id="@+id/VNDW2"
+            android:layout_toRightOf="@id/Week1"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Week3"
+            android:gravity="center"
+            android:id="@+id/VNDW3"
+            android:text="9.000 VNĐ"
+            android:layout_toRightOf="@id/Week2"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Week4"
+            android:gravity="center"
+            android:id="@+id/VNDW4"
+            android:layout_toRightOf="@id/Week3"
+            android:text="9.000 VNĐ"/>
+        <TextView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/Week4"
+            android:gravity="center"
+            android:id="@+id/VNDW5"
+            android:layout_toRightOf="@id/Week4"
+            android:text="9.000 VNĐ"/>
+
+    </RelativeLayout>
+</HorizontalScrollView>

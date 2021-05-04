@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuảnLýChiTiêu">
-        <activity android:name=".MainActivity_Chart_Day"></activity>
+        <activity android:name=".MainActivity_Chart_Week"></activity>
+        <activity android:name=".MainActivity_Chart_Day" />
         <activity android:name=".MainActivity_Chart" />
         <activity android:name=".MainActivity">
             <intent-filter>

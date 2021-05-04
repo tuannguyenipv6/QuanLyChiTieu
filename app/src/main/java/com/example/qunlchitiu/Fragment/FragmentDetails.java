@@ -41,6 +41,7 @@ import com.example.qunlchitiu.ItemSpenOnClickListener;
 import com.example.qunlchitiu.MainActivity;
 import com.example.qunlchitiu.MainActivity_Chart;
 import com.example.qunlchitiu.MainActivity_Chart_Day;
+import com.example.qunlchitiu.MainActivity_Chart_Week;
 import com.example.qunlchitiu.Object.Spending;
 import com.example.qunlchitiu.R;
 import com.example.qunlchitiu.SQLite.DatabaseSpending;
@@ -150,6 +151,13 @@ public class FragmentDetails extends Fragment implements SwipeRefreshLayout.OnRe
         });
 
         //Sự kiện biểu đồ Tuần
+        iArcChTuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MainActivity_Chart_Week.class);
+                startActivity(intent);
+            }
+        });
 
         //Sự kiện biểu đồ ngày
         iArcChNgay.setOnClickListener(new View.OnClickListener() {
